@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./index.css" />
+		<title>React</title>
+	</head>
+	<body>
+		<!-- THIS IS WHY WE CAN CALL REACT AS AN LIBRARY -->
+		<!-- React can only work in a small portion of a webpage like only header,sidebar,navbar etc.... -->
+		<!-- This will not replaced -->
+		<h1>Hello Top Of Root</h1>
+		<!-- React only care of this root id div and other portions of HTML do as previous -->
+		<div id="root">
+			<!-- It will be replaced after render and react will take care of it -->
+			<h1>I am here</h1>
+		</div>
+		<!-- This will not replaced -->
+		<h1>Hello Bottom Of Root</h1>
+		<!-- Order Of this file should be maintained -->
+		<!-- React dev file first then react DOM cdn then my js file -->
+		<!-- https://legacy.reactjs.org/docs/cdn-links.html -->
+		<script type="module" src="./App.js"></script>
+	</body>
+</html>
