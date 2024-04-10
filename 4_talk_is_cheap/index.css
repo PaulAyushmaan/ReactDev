@@ -33,7 +33,7 @@
 	margin: 5px;
 }
 .res-card:hover {
-	border: 1px solid black;
+	scale: 1.03;
 	cursor: pointer;
 }
 .res-logo {
@@ -94,4 +94,10 @@
 	border: none;
 	background-color: #f0f0f5;
 	padding: 5px 50px;
+}
+.menuImg {
+	width: 100px;
+}
+.user-card {
+	border: 2px solid black;
 }

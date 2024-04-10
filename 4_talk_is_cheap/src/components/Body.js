@@ -1,8 +1,9 @@
-import RestaurantCard from '../components/ResturantCard';
+import RestaurantCard from './ResturantCard';
 import Shimmer from './Shimmer';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 //state variable  - super powerful variable
-
+// https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.7248307&lng=88.4891889&restaurantId=236673&submitAction=ENTER
 const Body = () => {
 	const [listOfRestaurants, setListOfRestaurants] = useState([]);
 	const [searchText, setSearchText] = useState('');
@@ -13,7 +14,7 @@ const Body = () => {
 	console.log(`Body Rendered`);
 	const fetchData = async () => {
 		const data = await fetch(
-			'https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0687893&lng=72.87026469999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING',
+			'https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7248307&lng=88.4891889&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING',
 		);
 		const json = await data.json();
 		console.log(json);
@@ -68,7 +69,7 @@ const Body = () => {
 					onClick={() => {
 						console.log(`Button Clicked`);
 						const filteredData = listOfRestaurants.filter((resData) => {
-							return resData.info.avgRating >= 4.5;
+							return resData.info.avgRating >= 4.0;
 						});
 						setFilterRestaurants(filteredData);
 					}}
@@ -77,9 +78,11 @@ const Body = () => {
 				</button>
 			</div>
 			<div className="res-container">
-				{filterRestaurants.map((resData) => {
-					return <RestaurantCard key={resData.info.id} resData={resData} />;
-				})}
+				{filterRestaurants.map((resData) => (
+					<Link key={resData.info.id} to={'/restaurants/' + resData.info.id}>
+						<RestaurantCard resData={resData} />
+					</Link>
+				))}
 				{/* props */}
 				{/* <RestaurantCard resName="Burger King" cuisine="Fast Food" /> */}
 			</div>
